@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WebUploader</title>
+</head>
+<style>
+    .img-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        overflow: hidden;
+    }
+
+    .img-list li {
+        float: left;
+        width: 290px;
+        height: 185px;
+        overflow: hidden;
+        margin: 10px;
+    }
+</style>
+
+<body>
+    <!-- <div class="progress-bar">
+
+    </div> -->
+    <div class="filePicker">
+        <img class="picker-btn" alt='点击上传' src='./img/image.png'>
+    </div>
+    <ul class="img-list">
+
+    </ul>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/webuploader.js"></script>
+    <!-- <script src="js/uploadImg.js"></script> -->
+    <script src="js/jqupload.js"></script>
+    <script>
+        var uploadImgOption = {
+            container: '.filePicker',// 点击选择按钮的容器 必选
+            server: 'http://10.1.30.115:31000/image/upload2',// 图片上传服务地址 必选
+            previewUrl: 'http://10.1.30.115:31000', // 图片在服务器上的地址
+            threads: 3,// 最大可同时上传数 可选默认为3
+            filesNum: 3,// 最多上传的文件数量 可选 默认为20
+            allSize: 200,// 最多上传的文件总大小 可选 默认为200M
+            size: 2, // 最多上传的单个文件大小 可选 默认为20M
+            width: 1920, // 图片最大宽度 可选
+            height: 1080 // 图片最大高度 可选
+        }
+        var uploadimg = $.uploadImg(uploadImgOption);
+        // $.uploadCallBack(uploadimg)
+        // uploadimg.on('fileQueued', function (file) {
+        //     console.log('into filequeued');
+        // });
+        // 这里执行上传成功后的回调操作 
+        uploadimg.on('uploadAccept', function (obj, ret) {
+            // ret._raw 为图片在服务器上的一个相对地址
+            var rew = 'http://10.1.30.115:31000' + ret._raw;
+            var $imgList = $(document.createElement('li'))
+            var img = $('<img src="' + rew + '">');
+            var $cancelBtn = $('<span class="cancelBtn" >x</span>');
+            img.css({ 'width': '100%', 'height': '100%' });
+            $imgList.append(img)
+            $imgList.append($cancelBtn);
+            $cancelBtn.css({
+                'position': 'absolute',
+                'right': '3px',
+                'top': '4px',
+                'width': '20px',
+                'height': '20px',
+                'background': '#fff',
+                'text-align': 'center',
+                'opacity': '0.6',
+                'line-height': '.8',
+                'font-size': '20px',
+                'font-family': 'sans-serif',
+                'border-radius': '10px',
+                'cursor': 'pointer'
+            });
+            $cancelBtn.hover(function () {
+                $(this).css('opacity', '1')
+            })
+            $cancelBtn.mouseout(function () {
+                $(this).css('opacity', '.6')
+            })
+            $imgList.css('position', 'relative')
+            $('.img-list').append($imgList);
+            $cancelBtn.on('click', function () {
+                // 点击删除之后 调用webupload 删除队列里的一个元素 用来限制图片个数 
+                // 否则限制图片个数可能会不准确
+                $.webuploaderRemoveFile(uploadimg);
+                $imgList.remove()
+                console.log(uploadimg.getFiles('cancelled'));
+            })
+        });
+    </script>
+</body>
+
+</html>
