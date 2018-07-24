@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/charts.css">
+    <script src="js/echarts.simple.min.js"></script>
+</head>
+
+<body>
+    <div class="chartsbox">
+            <div class="datalist">
+                <ul>
+                    <li>
+                        <div>
+                            <p>
+                                <img src="img/1.png" />本月累计业绩</p>
+                            <span class="dataNum" style="color: #8586ee"><span style="font-weight:bold">2600</span> 万</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p>
+                                <img src="img/2.png" />本月单数</p>
+                            <span  class="dataNum" style="color: #f6625a"><span style="font-weight:bold">88</span> 个</span>
+                        </div>
+                    </li>
+                </ul>
+                <p class="tips">本月应收业绩超越了85%的经纪人</p>
+                <ul>
+                    <li>
+                        <div>
+                            <p>
+                                <img src="img/3.png" />连续无成单</p>
+                            <span class="dataNum" style="color: #f1892c"><span style="font-weight:bold">5</span> 天</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p>
+                                <img src="img/4.png" />连续无业绩</p>
+                            <span  class="dataNum" style="color: #f1892c"><span style="font-weight:bold">6</span> 天</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="echartsbox">
+                <div class="echartsTit">
+                    本月累计业绩统计图</div>
+                <div class="echartspie"></div>
+                <ul class="echartslist">
+                    <li>
+                        <span class="color" style="background: #fc9e4a"></span>
+                        <span class="text">二手售</span>
+                        <span class="echartsdata">53760</span>
+                    </li>
+                    <li>
+                        <span class="color" style="background: #4c82ef"></span>
+                        <span class="text">二手租</span>
+                        <span class="echartsdata">23700</span>
+                    </li>
+                    <li>
+                        <span class="color" style="background: #3fd057"></span>
+                        <span class="text">一手</span>
+                        <span class="echartsdata">10800</span>
+                    </li>
+                    <li>
+                        <span class="color" style="background: #c470f0"></span>
+                        <span class="text">其他</span>
+                        <span class="echartsdata">5000</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <script src="js/charts.js"></script>
+</body>
+
+</html>
