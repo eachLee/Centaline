@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>个人中心-出错了</title>
+<style>
+@media screen and (min-width:450px){
+	.error-500{
+		position: relative;
+		width: 800px;
+		height: 533px;
+		margin: 0 auto;
+		background: url('img/500-WEB-3x.png') no-repeat;
+		background-size: 100% 100%;
+	}
+	.error-500 span{
+		position: absolute;
+		font-size: 24px;
+		font-weight: bold;
+		top: 240px;
+		left: 210px;
+		color: #000;
+	}
+}
+@media screen and (max-width:450px){
+	.error-500{
+		position: fixed;
+		left: 50%;
+		top: 35%;
+		margin-left: -150px;
+		margin-top: -100px;		
+		width: 300px;
+		height: 200px;
+		background: url('img/500-WAP-3x.png') no-repeat;
+		background-size: 100% 100%;
+	}
+	.error-500 span{
+		position: absolute;
+		font-size: 14px;
+		font-weight: bold;
+		top: 93px;
+		left: 85px;
+		color: #000;
+	}
+}
+</style>
+</head>
+<body>
+	<div class="error-500"><span>内部服务器错误</span></div>
+</body>
+</html>
